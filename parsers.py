@@ -16,6 +16,7 @@ def devinfo(df_resume, break_point=None, pre_load=None):
         with urllib.request.urlopen(res) as url:
             data = url.read()
             resume = json.loads(data.decode())
+        print(type(resume))
         if "ResumeParserData" in resume:
             dev_info = extract_resume_data(resume)
             dev_info["dev_id"] = idu
