@@ -6,7 +6,9 @@ from utils import querygbq, clean_duplicates, gen_dict_list, update_dict_list, e
 from sql_source import dev_mcq, dev_ti, dev_resumes
 
 
-def devinfo(df_resume, break_point=1e15, pre_load=None):
+def devinfo(df_resume, break_point=None, pre_load=None):
+    if break_point is None:
+        break_point = 1e15
     df_resume = clean_duplicates(df_resume)
     all_dev = None
     
@@ -21,9 +23,12 @@ def devinfo(df_resume, break_point=1e15, pre_load=None):
                 all_dev = gen_dict_list(dev_info.keys())
             all_dev = update_dict_list(dev_info, all_dev)
         else:
+            if isinstance(resume, dict):
+                print(resume.keys())
+            else:
+                print(resume)
             pass
         if i > break_point:
-            print(i)
             break
     return pd.DataFrame(all_dev)
 
