@@ -7,11 +7,7 @@ from sql_source import dev_mcq, dev_ti, dev_resumes
 
 
 def devinfo(df_resume, break_point=1e15, pre_load=None):
-    print("start")
-    # df_resume = querygbq(dev_resumes)
     df_resume = clean_duplicates(df_resume)
-    # print("end")
-    # return df_resume
     all_dev = None
     
     for i, (idu, res) in enumerate(zip(df_resume["user_id"], df_resume["url"])):
@@ -31,7 +27,7 @@ def devinfo(df_resume, break_point=1e15, pre_load=None):
             break
     return pd.DataFrame(all_dev)
 
-
+    
 if __name__ == '__main__':
     df = devinfo(None, 30)
     print(df)
