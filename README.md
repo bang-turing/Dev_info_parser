@@ -2,6 +2,9 @@
 Interface for extract developer information from Turing database
 
 This repo need google authentication in order to run. 
+
+Use this code block in jupyter notebook(local not ssh) or in gg colab
+
 ```
 !git clone https://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@github.com/bang-turing/Dev_info_parser
 %cd Dev_info_parser
