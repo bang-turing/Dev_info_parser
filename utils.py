@@ -38,7 +38,7 @@ def update_dict_list(in_dict, dict_list):
     return dict_list
 
 
-def extract_resume_data(resume):
+def extract_resume_data(resume, idu):
     """
     Parse dev data from Rchilli data output(download from link in dv2_parsed_resume_link table)
     Args:
@@ -48,6 +48,7 @@ def extract_resume_data(resume):
 
     """
     info = dict()
+    info["dev_id"] = idu
     resume = resume["ResumeParserData"]
 
     language_data = resume["LanguageKnown"]

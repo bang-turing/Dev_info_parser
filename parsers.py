@@ -17,8 +17,8 @@ def devinfo(df_resume, break_point=None, pre_load=None):
             data = url.read()
             resume = json.loads(data.decode())
         if "ResumeParserData" in resume:
-            dev_info = extract_resume_data(resume)
-            dev_info["dev_id"] = idu
+            dev_info = extract_resume_data(resume, idu)
+
             if all_dev is None:
                 all_dev = gen_dict_list(dev_info.keys())
             all_dev = update_dict_list(dev_info, all_dev)
