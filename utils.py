@@ -17,7 +17,7 @@ def clean_duplicates(df_data, clean_id="user_id", sort="created_date"):
     Returns: Clean DataFrame
 
     """
-    df_data = df_data.sort_values(sort, ascending=True)
+    df_data = df_data.sort_values(sort, ascending=False)
     df_data = df_data.drop_duplicates(subset=clean_id, keep='first')
     return df_data
 
