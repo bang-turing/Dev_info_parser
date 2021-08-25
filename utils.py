@@ -68,6 +68,14 @@ def extract_resume_data(resume):
     info["VisaStatus"] = resume["VisaStatus"]
 
     webl = resume["WebSite"]
+
+    info["WebGit"] = 0
+    info["WebStackoverflow"] = 0
+    info["WebLinkedin"] = 0
+    info["WebFacebook"] = 0
+    info["WebTwitter"] = 0
+    info["WebScholar"] = 0
+
     for web in webl:
         if web["Type"] == "Github":
             info["WebGit"] = 1
