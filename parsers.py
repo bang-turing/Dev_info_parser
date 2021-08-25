@@ -2,7 +2,7 @@ import json
 import pandas as pd
 import urllib.request
 
-from utils import querygbq, clean_duplicates, gen_dict_list, update_dict_list, extract_resume_data
+from utils import clean_duplicates, gen_dict_list, update_dict_list, extract_resume_data
 from sql_source import dev_mcq, dev_ti, dev_resumes
 
 
@@ -16,7 +16,6 @@ def devinfo(df_resume, break_point=None, pre_load=None):
         with urllib.request.urlopen(res) as url:
             data = url.read()
             resume = json.loads(data.decode())
-        print(type(resume), i)
         if "ResumeParserData" in resume:
             dev_info = extract_resume_data(resume)
             dev_info["dev_id"] = idu
@@ -25,8 +24,10 @@ def devinfo(df_resume, break_point=None, pre_load=None):
             all_dev = update_dict_list(dev_info, all_dev)
         else:
             pass
-        if all_dev is not None and len(all_dev[all_dev.keys()[0]]) > break_point:
-            break
+        if all_dev is not None:
+            if len(all_dev[list(all_dev.keys())[0]]) > break_point:
+                break
+
     return pd.DataFrame(all_dev)
 
     

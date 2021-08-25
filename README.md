@@ -11,7 +11,7 @@ from utils import querygbq
 from sql_source import dev_resumes
 
 df_resume = querygbq(dev_resumes)
-# change
+# change breakpoint to None to extract all data 
 df_info = devinfo(df_resume, break_point=30)
 print(df_info)
 ```
